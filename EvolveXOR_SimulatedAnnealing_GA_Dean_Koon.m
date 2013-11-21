@@ -15,7 +15,7 @@ function[] = EvolveXOR_SimulatedAnnealing_GA_Dean_Koon( PopSize )
     Pop = randi( 14, PopSize, 8)-7;
     
     %assume
-    sigma=3; varM=1; numCross=-1; chanceCross=.5; chanceMutate=.5; desired=7e-4;
+    sigma=3; varM=1; numCross=-1; chanceCross=.5; chanceMutate=.5; desired=.2;
     Matcher = [ 1 1 0; 1 0 1; 0 1 1; 0 0 0]; 
     ProbTest = @SimAnnealing,
         
@@ -26,9 +26,7 @@ function[] = EvolveXOR_SimulatedAnnealing_GA_Dean_Koon( PopSize )
     %format into [w1_in1 w1_in2 w1_0 0 0 ; w2_in1 w2_in2 w2_0 w2_1 0 ];
     weight = [Best(1), Best(2), Best(3), 0, 0; Best(4), Best(5), Best(6), Best(7), 0]
     bestError
-    bestOffset = [0 Best];
-  	BestScenario = Compare( bestOffset, bestOffset, Matcher, 0, ProbTest )
-    
+     
     %plot the Performance
     figure;
     plot(X);

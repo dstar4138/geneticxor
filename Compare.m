@@ -15,7 +15,7 @@ function [ item ] = Compare( item, parentScore, Matcher, T, ProbTest )
     
     weight = [ item(2), item(3), item(4), 0, 0 ; item(5), item(6), item(7), item(8), 0 ];
     %data = [ Matcher(1); Matcher(2); 1; X1; Matcher(3) ] 
-%     disp(' ')
+    disp(' ')
     err = zeros(1,4);
     for row = 1:4
         %x2=0, bias = 1
@@ -33,10 +33,10 @@ function [ item ] = Compare( item, parentScore, Matcher, T, ProbTest )
         %calculate error
         err(row) = abs(X2(row)-Matcher(row,3));
                 
-%          disp([  ' err1 = ', num2str(err(row)), 9 ...
-%                  ' Iin1 = ', num2str(Matcher(row,1)), 9 ...
-%                  ' Iin2 = ', num2str(Matcher(row,2)), 9 ...
-%                  ' X2out = ', num2str(X2(row))           ]);
+         disp([  ' err1 = ', num2str(err(row)), 9 ...
+                 ' Iin1 = ', num2str(Matcher(row,1)), 9 ...
+                 ' Iin2 = ', num2str(Matcher(row,2)), 9 ...
+                 ' X2out = ', num2str(X2(row))           ]);
     end%end row for loop
        
     %combine error rate
