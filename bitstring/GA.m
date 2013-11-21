@@ -38,10 +38,10 @@ function [X, Generations, Best, BestScore] = ...
         Pop = sortrows( Pop, 1 );
         Generations = Generations + 1;
         Best = Pop(1,2:vecLength+1); 
-        BestScore = Pop(1,1)
+        BestScore = Pop(1,1);
         X(Generations)=BestScore;        
         
         %For simulated annealing. we want higher numbers, not lower
-        T = .995*T;
+        T = .999*T;
     end %end while
 end
