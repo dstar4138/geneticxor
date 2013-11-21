@@ -1,48 +1,59 @@
 %Par1 parent 1
 %Par2 parent 2
 %numCross number of time to cross over.  if = -1, then randomly decide
-function [X] = CrossOver(Par1, Par2, vecLength, numCross)
-    %initialize Crossover child
-    X = Par1;
-   
+function [Pop] = CrossOver(Pop, A, B, numCross, Matcher, T, ProbTest )
+%     disp('CrossOver')        
+    %initialize Crossover children
+    X = Pop(A,:);
+    Y = Pop(B,:);
+    vecLength = size(X,2);
+
     if numCross == -1 
         %randomly decide number of crossovers
         %select at random 
-        random = rand(vecLength);
+        random = rand(1, vecLength );
+
+        for i = 2:vecLength
+            if random(i) < .5
+                %Stay the same
+                X(1,i) = Pop(A,i);
+                Y(1,i) = Pop(B,i);
+            else
+                %CrossOver
+                X(1,i) = Pop(B,i);
+                Y(1,i) = Pop(A,i);
+            end % if random
+        end %i loop
+
     else
         %n number of crossovers            
-        %select numCross number of random place to cross over
-        
-        %cannot generate the same number twice
-        randomCrossIndex = zeros(numCross);
-        for k = 1 : numCross
-            temp = sort(ceil(vecLength*rand(1)));
-            if ismember(randomCrossIndex(k), temp)
-                k=k-1;
-            else 
-                randomCrossIndex(k) = temp;
-            end %if
-        end %k loop
-        
-        %generate change condition or not
-        random = zeros(1,17);
-        swap = false;
-        for j = 1 : vecLength
-            %to cross or not to cross
-            if ~ismember(randomCrossIndex, j)
-                swap = ~swap;
-            end %if
-            random(j) = swap;
-        end %j loop
+        %select numCross number of random place to cross over, sort index
+        randomCrossIndex = sort(randperm(vecLength, numCross)); 
+        randomCrossIndex(numCross+1) = vecLength;
+        start = 1; stop = randomCrossIndex(1); count = 1;
+        while stop ~= vecLength
+            stop = randomCrossIndex(count);
+            for p = start:stop
+                if mod(p,2)==0
+                    X(1,p) = Pop(A,p);
+                    Y(1,p) = Pop(B,p);
+                else
+                    X(1,p) = Pop(B,p);
+                    Y(1,p) = Pop(A,p);
+                end
+            end
+            start = stop+1;
+            count = count +1;
+        end % while loop
     end %if numCross
-    
-    %perform crossover by either if statements above.
-    %if number of crossover specified, use 0 at 0% and 1 as 100% crossing
-    for i = 2:vecLength
-        if random(i) < .5
-            X(i) = Par1(i);
-        else
-            X(i) = Par2(i);
-        end % if random
-    end %i loop
+
+    X = Compare( X, Pop(A,1), Matcher, T, ProbTest );
+    Y = Compare( Y, Pop(B,1), Matcher, T, ProbTest );
+
+    if X(1,1)<Pop(A,1)
+        Pop(A,:)=X(1,:);
+    end
+    if Y(1,1)<Pop(B,1)
+        Pop(B,:)=Y(1,:);
+    end
 end %function
