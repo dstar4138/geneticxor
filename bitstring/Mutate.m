@@ -25,11 +25,11 @@ function [ Pop ] = Mutate( Pop, A, B, varM, Matcher, T , ProbTest )
 
     %replace child
     if pick==1
-        if Child(1,1)<Pop(A,1)
+        if Child(1,1)>Pop(A,1)
             Pop(A,:)=Child(1,:);
         end
     else
-        if Child(1,1)<Pop(B,1)
+        if Child(1,1)>Pop(B,1)
             Pop(B,:)=Child(1,:);
         end
     end

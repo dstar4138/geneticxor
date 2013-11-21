@@ -50,10 +50,10 @@ function [Pop] = CrossOver(Pop, A, B, numCross, Matcher, T, ProbTest )
     X = Compare( X, Pop(A,1), Matcher, T, ProbTest );
     Y = Compare( Y, Pop(B,1), Matcher, T, ProbTest );
 
-    if X(1,1)<Pop(A,1)
+    if X(1,1)>Pop(A,1)
         Pop(A,:)=X(1,:);
     end
-    if Y(1,1)<Pop(B,1)
+    if Y(1,1)>Pop(B,1)
         Pop(B,:)=Y(1,:);
     end
 end %function
