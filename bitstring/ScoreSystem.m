@@ -1,12 +1,9 @@
-function [ NewPop ] = ScoreSystem( Pop , Matcher, T, ProbTest );
-	% Instead of having a score, maybe just order? so compare sort with Match?
-	[m n]= size(Pop);
-
-    for i=1:m
-		NewPop(i,:) = Compare( Pop(i,:), Matcher );
+function [Population] = ScoreSystem( Pop, Matcher, T, ProbTest )
+%   disp('ScoreSystem')         
+    Population = Pop;
+    for i =1:size(Pop,1)
+        Population(i,:) = Compare( Pop(i,:), 0, Matcher, T, ProbTest );
     end
-	
-    %sort in descending score order
-	NewPop = sortrows( NewPop, -1 );
-	%NewPop = Temp(:,2:end) % Trim off the first column (which was score).
+    
+    Population = sortrows( Population, -1 );
 end
