@@ -1,6 +1,7 @@
-function [A B Rest] = take2random( Mat )
-    T = Mat(randperm(size(Mat,1)),:);
-    A = T(1,:);
-	B = T(2,:);
-	Rest = T(3:end,:);
+function [A, B, Rest, pick] = take2random( MatRef )
+%     disp('take2random')
+    pick = randperm(  size(MatRef,1)  );
+    A = pick(1);
+	B = pick(2);
+	Rest = pick(3:end);
 end
