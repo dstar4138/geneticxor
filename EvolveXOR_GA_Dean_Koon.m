@@ -15,7 +15,7 @@ function[] = EvolveXOR_GA_Dean_Koon( PopSize )
     Pop = randi( 14, PopSize, 8)-7;
     
     %assume
-    sigma=3; varM=1; numCross=-1; chanceCross=.3; chanceMutate=.3; desired=.01;
+    sigma=3; varM=1; numCross=-1; chanceCross=.5; chanceMutate=.5; desired=7e-4;
     Matcher = [ 1 1 0; 1 0 1; 0 1 1; 0 0 0]; 
     ProbTest = @Sigmoid; 
 
