@@ -20,7 +20,7 @@ function[] = EvolveXOR_SimulatedAnnealing_GA_Dean_Koon( PopSize )
     ProbTest = @SimAnnealing,
         
     [ X, Generations, Best, bestError ] = ...
-        GA( ProbTest, Pop, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher );
+        GA( ProbTest, Pop, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher, 1 );
     
     %Display Best weight
     %format into [w1_in1 w1_in2 w1_0 0 0 ; w2_in1 w2_in2 w2_0 w2_1 0 ];

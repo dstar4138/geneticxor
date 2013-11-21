@@ -24,7 +24,7 @@ function [Generations, Best, Score] = ...
     ProbTest = @Sigmoid; 
     
 	[ X, Generations, Best, Score ] = ...
-        GA( ProbTest, input, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher )  
+        GA( ProbTest, input, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher, -1 )  
 
     %plot the Performance
     figure;

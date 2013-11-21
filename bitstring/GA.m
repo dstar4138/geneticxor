@@ -1,6 +1,6 @@
 %% General Genetic Algorithm. 
 function [X, Generations, Best, BestScore] = ...
-    GA( ProbTest, input, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher ) 
+    GA( ProbTest, input, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher, sort ) 
     
     % Initialize
     X = 0; Generations = 1; 
@@ -35,7 +35,7 @@ function [X, Generations, Best, BestScore] = ...
         end % Finished running through MatingPool
 
         % Display as you run
-        Pop = sortrows( Pop, 1 );
+        Pop = sortrows( Pop, sort );
         Generations = Generations + 1;
         Best = Pop(1,2:vecLength+1); 
         BestScore = Pop(1,1);
