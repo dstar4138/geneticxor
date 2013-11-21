@@ -1,7 +1,7 @@
 % Needs to return an even number.
 function[MatingPool] = MakingMatingPool(Pop, sigma)
     %Mating pool is the same size as Population
-    [m n] = size(Pop);
+    [m, n] = size(Pop);
     temp = ceil(abs((randn(m,1) * sqrt(sigma) + 0)));
     for i=1:m
     %Using a gaussian distribution with the center at 0.
