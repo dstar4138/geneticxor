@@ -17,7 +17,7 @@ function [ Pop ] = Mutate( Pop, A, B, varM, Matcher, T , ProbTest )
         if x>size(Child,2)
             break;
         end
-        r_num = rand(1)*3;
+        r_num = rand(1)*10;
         Child(1,x) = r_num - (.5*r_num) + Child(1,x);
     end % End-of-For-Loop
 

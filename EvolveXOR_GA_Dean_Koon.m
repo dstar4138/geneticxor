@@ -12,10 +12,10 @@ function[] = EvolveXOR_GA_Dean_Koon( PopSize )
         disp('population size cannot be an odd number, PopSize increased by 1');
         PopSize=PopSize+1;
     end
-    Pop = randi( 6, PopSize, 8)-3;
+    Pop = randi( 14, PopSize, 8)-7;
     
     %assume
-    sigma=3; varM=1; numCross=-1; chanceCross=.8; chanceMutate=.8; desired=.01;
+    sigma=3; varM=1; numCross=-1; chanceCross=.3; chanceMutate=.3; desired=.01;
     Matcher = [ 1 1 0; 1 0 1; 0 1 1; 0 0 0]; 
     ProbTest = @Sigmoid; 
 
