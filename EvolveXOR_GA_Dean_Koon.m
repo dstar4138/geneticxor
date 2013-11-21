@@ -15,12 +15,12 @@ function[] = EvolveXOR_GA_Dean_Koon( PopSize )
     Pop = randi( 6, PopSize, 8)-3;
     
     %assume
-    sigma=3; varM=1; numCross=-1; chanceCross=.3; chanceMutate=.3; threshold=.01;
+    sigma=3; varM=1; numCross=-1; chanceCross=.8; chanceMutate=.8; desired=.01;
     Matcher = [ 1 1 0; 1 0 1; 0 1 1; 0 0 0]; 
     ProbTest = @Sigmoid; 
 
     [ X, Generations, Best, bestError ] = ...
-        GA( ProbTest, Pop, sigma, varM, numCross, chanceCross, chanceMutate, threshold, Matcher );      
+        GA( ProbTest, Pop, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher );      
     
     %Display Best weight
     %format into [w1_in1 w1_in2 w1_0 0 0 ; w2_in1 w2_in2 w2_0 w2_1 0 ];
