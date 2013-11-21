@@ -3,7 +3,7 @@ function [ NewPop ] = ScoreSystem( Pop , Matcher, T, ProbTest );
 	[m n]= size(Pop);
 
     for i=1:m
-		NewPop(i,:) = Compare( Pop(i,:), Match );
+		NewPop(i,:) = Compare( Pop(i,:), Matcher );
     end
 	
     %sort in descending score order

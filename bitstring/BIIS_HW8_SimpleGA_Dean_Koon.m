@@ -35,7 +35,7 @@ function [Generations, Best, Score] = ...
     
     %Final population
     figure;
-    hist(Pop(:,1));
+    hist(input(:,1));
     title('Final population score')
     xlabel('Scores')
     ylabel('count')
