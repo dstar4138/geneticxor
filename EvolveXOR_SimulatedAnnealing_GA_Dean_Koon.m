@@ -23,8 +23,11 @@ function[ Pop, Generations, Score] = EvolveXOR_SimulatedAnnealing_GA_Dean_Koon( 
         GA( ProbTest, Pop, sigma, varM, numCross, chanceCross, chanceMutate, threshold, Matcher );
     
     %Display Best weight
-    disp('weight')
     %format into [w1_in1 w1_in2 w1_0 0 0 ; w2_in1 w2_in2 w2_0 w2_1 0 ];
+    weight = [Best(1), Best(2), Best(3), 0, 0; Best(4), Best(5), Best(6), Best(7), 0]
+    bestError
+    bestOffset = [0 Best];
+% 	BestScenario = Compare( bestOffset, bestOffset, Matcher, 0, ProbTest )
     
     %plot the Performance
     figure;
