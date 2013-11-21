@@ -41,9 +41,6 @@ function [ item ] = Compare( item, parentScore, Matcher, T, ProbTest )
                  ' Iin2 = ', num2str(Matcher(row,2)), 9 ...
                  ' X2out = ', num2str(X2(row))           ]);
     end%end row for loop
-   
-    err = err
- 
        
     %combine error rate
     Error = .25*sum(err);
