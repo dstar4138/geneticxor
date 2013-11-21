@@ -15,14 +15,16 @@
 
 %ex GA( 1000, 3, .5, -1, .3, .3, 1000, ones(1,1000)) 
 function [Generations, Best, Score] = ...
-        BIIS_HW8_SimpleGA_Dean_Koon ( vecLength, popSize, sigma, varM, numCross, chanceCross, chanceMutate, threshold, Matcher ) 
+        BIIS_HW8_SimpleGA_Dean_Koon ( vecLength, popSize, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher ) 
   
 	% Create Random Population of 1/0’s of length: vecLength
     % Plus 1 because we will use column 1 for holding the score
-	Pop = randi(2, popSize, vecLength+1 ) - 1;
-
+	input = randi(2, popSize, vecLength+1 ) - 1;
+    %default value
+    ProbTest = @Sigmoid; 
+    
 	[ X, Generations, Best, Score ] = ...
-        GA( Pop, sigma, varM, numCross, chanceCross, chanceMutate, threshold, Matcher ) 
+        GA( ProbTest, input, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher )  
 
     %plot the Performance
     figure;
