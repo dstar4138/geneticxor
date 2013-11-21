@@ -9,8 +9,6 @@
 % 2. Update x1 and x2
 % Apply same inputs second time, this time x2 is correct.
 % Output x2
-
-
 function [ item ] = Compare( item, parentScore, Matcher, T, ProbTest )
     % For each row of the truth table find the score for that 
 	% item weight system
