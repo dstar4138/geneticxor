@@ -1,9 +1,8 @@
 %% General Genetic Algorithm. 
 function [X, Generations, Best, BestScore] = ...
-    GA2( ProbTest, input, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher ) 
+    GA( ProbTest, input, sigma, varM, numCross, chanceCross, chanceMutate, desired, Matcher ) 
     
     % Initialize
-    BestScore=0; Best = 0;
     X = 0; Generations = 1; 
     Pop = input; vecLength = size(Pop,2)-1;
 
@@ -17,7 +16,7 @@ function [X, Generations, Best, BestScore] = ...
     Best = Pop(1,2:vecLength+1);
     
     %while loop of generations
-    while Pop(1,1)>1e-2
+    while Pop(1,1)>1e-1
         %Making a mating pool that references the population pool
         MatingPool = MakingMatingPool(Pop, sigma); 
         
