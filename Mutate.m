@@ -26,8 +26,12 @@ function [ Pop ] = Mutate( Pop, A, B, varM, Matcher, T , ProbTest )
 
     %replace child
     if pick==1
-        Pop(A,1)=min( Child(1,1) , Pop(A,1));
+        if X(1,1)<Pop(A,1)
+            Pop(A,:)=Child(1,:);
+        end
     else
-        Pop(B,1)=min( Child(1,1) , Pop(B,1));
+        if Y(1,1)<Pop(B,1)
+            Pop(B,:)=Child(1,:);
+        end
     end
 end % End-of-Function

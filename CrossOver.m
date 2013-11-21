@@ -47,9 +47,13 @@ function [Pop] = CrossOver(Pop, A, B, numCross, Matcher, T, ProbTest )
         end % while loop
     end %if numCross
 
-    X = Compare( X, A(1,1), Matcher, T, ProbTest );
-    Y = Compare( Y, B(1,1), Matcher, T, ProbTest );
+    X = Compare( X, Pop(A,1), Matcher, T, ProbTest );
+    Y = Compare( Y, Pop(B,1), Matcher, T, ProbTest );
 
-    Pop(A,1)=min( X(1,1) , Pop(A,1));
-    Pop(B,1)=min( Y(1,1) , Pop(B,1));
+    if X(1,1)<Pop(A,1)
+        Pop(A,:)=X(1,:);
+    end
+    if Y(1,1)<Pop(B,1)
+        Pop(B,:)=Y(1,:);
+    end
 end %function

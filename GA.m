@@ -16,7 +16,7 @@ function [X, Generations, Best, BestScore] = ...
     Best = Pop(1,2:vecLength+1);
     
     %while loop of generations
-    while abs(Pop(1,1)-desired)>.01
+    while abs(Pop(1,1)-desired)>.15
         %Making a mating pool that references the population pool
         MatingPool = MakingMatingPool(Pop, sigma); 
         
