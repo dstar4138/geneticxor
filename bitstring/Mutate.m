@@ -1,17 +1,36 @@
 % Randomly picks A or B, mutates it in a batch according to varM
-function [C] = Mutate(varM, A, B )
-    i = randi( size(A)-1 ) + 1 ;% Pick a random bit in the vector
+function [ Pop ] = Mutate( Pop, A, B, varM, Matcher, T , ProbTest )
+%     disp('Mutate')    
+    i = randi( size(Pop,2) -1 ) + 1 ;% Pick a random bit in the vector
     if rand(1) < 0.5
-        C = A;
+        Child = Pop(A,:);
+        parentScore = A(1,1);
+        pick = 1;
     else 
-        C = B;
+        Child = Pop(B,:);
+        parentScore = B(1,1);
+        pick = 2;
     end
-    
+
     % The larger the variance, the wider the spread.
     for x=i:i+varM
-        if x>size(C)
+        if x>size(Child,2)
             break;
         end
-        C(x) = ~C(x);
+        Child(1,x) = ~Child(1,x);
     end % End-of-For-Loop
+
+    %score the child
+    Child = Compare( Child, parentScore, Matcher, T, ProbTest );
+
+    %replace child
+    if pick==1
+        if Child(1,1)<Pop(A,1)
+            Pop(A,:)=Child(1,:);
+        end
+    else
+        if Child(1,1)<Pop(B,1)
+            Pop(B,:)=Child(1,:);
+        end
+    end
 end % End-of-Function
