@@ -15,7 +15,7 @@ function[] = EvolveXOR_GA_Dean_Koon( PopSize )
     Pop = randi( 6, PopSize, 8)-3;
     
     %assume
-    sigma=3; varM=1; numCross=-1; chanceCross=.8; chanceMutate=.8; threshold=.01;
+    sigma=3; varM=1; numCross=-1; chanceCross=.3; chanceMutate=.3; threshold=.01;
     Matcher = [ 1 1 0; 1 0 1; 0 1 1; 0 0 0]; 
     ProbTest = @Sigmoid; 
 
@@ -26,7 +26,8 @@ function[] = EvolveXOR_GA_Dean_Koon( PopSize )
     %format into [w1_in1 w1_in2 w1_0 0 0 ; w2_in1 w2_in2 w2_0 w2_1 0 ];
     weight = [Best(1), Best(2), Best(3), 0, 0; Best(4), Best(5), Best(6), Best(7), 0]
     bestError
-	BestScenario = Compare(Best, Best, Matcher, 0);
+    bestOffset = [0 Best];
+	BestScenario = Compare( bestOffset, bestOffset, Matcher, 0, ProbTest )
     
     %plot the Performance
     figure;

@@ -16,7 +16,8 @@ function [X, Generations, Best, BestScore] = ...
     Best = Pop(1,2:vecLength+1);
     
     %while loop of generations
-    while Pop(1,1)>1e-1
+    Threshold = .15;
+    while Pop(1,1)>Threshold
         %Making a mating pool that references the population pool
         MatingPool = MakingMatingPool(Pop, sigma); 
         
@@ -30,22 +31,18 @@ function [X, Generations, Best, BestScore] = ...
 
             if rand(1) < chanceMutate
                 Pop = Mutate( Pop, A, B, varM, Matcher, T, ProbTest );
-            end % end mutation           
+            end % end mutation   
+            
         end % Finished running through MatingPool
 
         % Display as you run
         Pop = sortrows( Pop, 1 );
         Generations = Generations + 1;
         Best = Pop(1,2:vecLength+1); 
-        BestScore = Pop(1,1);
+        BestScore = Pop(1,1)
         X(Generations)=BestScore;        
         
-        %For simulated annealing. 
-        %we want higher numbers, not lower
+        %For simulated annealing. we want higher numbers, not lower
         T = .95*T;
-        
     end %end while
-    
-    
-    
 end
